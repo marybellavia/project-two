@@ -26,25 +26,25 @@ House = create_house(db)
 @app.route("/")
 def home():
     # Return template and data
-    return render_template("index.html")
+    return render_template("index.html", title="Rent & House Index Analysis")
 
 @app.route("/about")
 def about():
     # Return template and data
-    return render_template("about.html")
+    return render_template("about.html", title="About")
 
 # Route that will trigger the scrape function
-@app.route("/graphs")
-def graphs():
+@app.route("/models")
+def models():
 
     # Redirect back to home page
-    return render_template("graphs.html")
+    return render_template("models.html", title="Models")
 
-@app.route("/heatmap")
-def heatmaps():
+@app.route("/maps")
+def maps():
 
     # Redirect back to home page
-    return render_template("heatmaps.html")
+    return render_template("maps.html", title="Maps")
 
 if __name__ == "__main__":
     app.run(debug=True)

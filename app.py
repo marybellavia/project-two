@@ -28,6 +28,11 @@ def home():
     # Return template and data
     return render_template("index.html")
 
+@app.route("/about")
+def about():
+    # Return template and data
+    return render_template("about.html")
+
 # Route that will trigger the scrape function
 @app.route("/graphs")
 def graphs():

@@ -65,7 +65,7 @@ def maps():
     # Redirect back to home page
     return render_template("maps.html", title="Maps")
 
-@app.route("/rent_data")
+@app.route("/api/rent_data")
 def rent_data():
 
     results = session.query(Rent.RegionId, Rent.SizeRank, Rent.State, Rent.City, Rent.Year, Rent.Month, Rent.Price).all()
@@ -80,7 +80,7 @@ def rent_data():
 
     rent_data = [{
         "RegionId": RegionId,
-        "SizeRank": SizeRank
+        "SizeRank": SizeRank,
         "State": State,
         "City": City,
         "Year": Month,
@@ -90,7 +90,7 @@ def rent_data():
 
     return jsonify(rent_data)
 
-@app.route("/house_data")
+@app.route("/api/house_data")
 def house_data():
 
     results = session.query(House.RegionId, House.SizeRank, House.State, House.City, House.Year, House.Month, House.Price).all()
@@ -105,7 +105,7 @@ def house_data():
 
     rent_data = [{
         "RegionId": RegionId,
-        "SizeRank": SizeRank
+        "SizeRank": SizeRank,
         "State": State,
         "City": City,
         "Year": Month,

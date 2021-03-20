@@ -30,10 +30,10 @@ engine = create_engine("sqlite:///rent_house.sqlite")
 conn = engine.connect()
 
 house_df = pandas.read_csv("static/data/house_cleaned.csv")
-house_df.to_sql("House", conn, if_exists='append', index=False)
+house_df.to_sql("House", conn, if_exists='replace', index=False)
 
 rent_df = pandas.read_csv("static/data/rent_cleaned.csv")
-rent_df.to_sql("Rent", conn, if_exists='append', index=False)
+rent_df.to_sql("Rent", conn, if_exists='replace', index=False)
 
 Rent = create_rent(db)
 House = create_house(db)

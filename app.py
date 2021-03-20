@@ -35,8 +35,8 @@ house_df.to_sql("House", conn, if_exists='append', index=False)
 rent_df = pandas.read_csv("static/data/rent_cleaned.csv")
 rent_df.to_sql("Rent", conn, if_exists='append', index=False)
 
- # Create both the Surfer and Board tables within the database
-Base.metadata.create_all(conn)
+Rent = create_rent(db)
+House = create_house(db)
 
 from sqlalchemy.orm import Session
 session = Session(bind=engine)
@@ -65,5 +65,58 @@ def maps():
     # Redirect back to home page
     return render_template("maps.html", title="Maps")
 
+@app.route("/rent_data")
+def rent_data():
+
+    results = session.query(Rent.RegionId, Rent.SizeRank, Rent.State, Rent.City, Rent.Year, Rent.Month, Rent.Price).all()
+
+    RegionId = [result[0] for result in results]
+    SizeRank = [result[1] for result in results]
+    State = [result[2] for result in results]
+    City = [result[3] for result in results]
+    Month = [result[4] for result in results]
+    Year = [result[5] for result in results]
+    Price = [result[6] for result in results]
+
+    rent_data = [{
+        "RegionId": RegionId,
+        "SizeRank": SizeRank
+        "State": State,
+        "City": City,
+        "Year": Month,
+        "Month": Year,
+        "Price": Price
+    }]
+
+    return jsonify(rent_data)
+
+@app.route("/house_data")
+def house_data():
+
+    results = session.query(House.RegionId, House.SizeRank, House.State, House.City, House.Year, House.Month, House.Price).all()
+
+    RegionId = [result[0] for result in results]
+    SizeRank = [result[1] for result in results]
+    State = [result[2] for result in results]
+    City = [result[3] for result in results]
+    Month = [result[4] for result in results]
+    Year = [result[5] for result in results]
+    Price = [result[6] for result in results]
+
+    rent_data = [{
+        "RegionId": RegionId,
+        "SizeRank": SizeRank
+        "State": State,
+        "City": City,
+        "Year": Month,
+        "Month": Year,
+        "Price": Price
+    }]
+
+    return jsonify(rent_data)
+
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+

@@ -26,7 +26,11 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 # Establish Connection
-engine = create_engine("sqlite:///rent_house.sqlite")
+engine = create_engine(
+'sqlite:///rent_house.sqlite',
+connect_args={'check_same_thread': False}
+)
+
 conn = engine.connect()
 
 house_df = pandas.read_csv("static/data/house_cleaned.csv")

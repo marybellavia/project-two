@@ -72,21 +72,23 @@ def maps():
 @app.route("/api/rent_data")
 def rent_data():
 
-    results = session.query(Rent.RegionId, Rent.SizeRank, Rent.State, Rent.City, Rent.Year, Rent.Month, Rent.Price).all()
+    results = session.query(Rent.RegionId, Rent.State, Rent.City, Rent.Lat, Rent.Lng, Rent.Year, Rent.Month, Rent.Price).all()
 
     RegionId = [result[0] for result in results]
-    SizeRank = [result[1] for result in results]
-    State = [result[2] for result in results]
-    City = [result[3] for result in results]
-    Month = [result[4] for result in results]
-    Year = [result[5] for result in results]
-    Price = [result[6] for result in results]
+    State = [result[1] for result in results]
+    City = [result[2] for result in results]
+    Lat = [result[3] for result in results]
+    Lng = [result[4] for result in results]
+    Month = [result[5] for result in results]
+    Year = [result[6] for result in results]
+    Price = [result[7] for result in results]
 
     rent_data = [{
         "RegionId": RegionId,
-        "SizeRank": SizeRank,
         "State": State,
         "City": City,
+        "Lat": Lat,
+        "Lng": Lng,
         "Year": Month,
         "Month": Year,
         "Price": Price
@@ -97,27 +99,29 @@ def rent_data():
 @app.route("/api/house_data")
 def house_data():
 
-    results = session.query(House.RegionId, House.SizeRank, House.State, House.City, House.Year, House.Month, House.Price).all()
+    results = session.query(House.RegionId, House.State, House.City, House.Lat, House.Lng, House.Year, House.Month, House.Price).all()
 
     RegionId = [result[0] for result in results]
-    SizeRank = [result[1] for result in results]
-    State = [result[2] for result in results]
-    City = [result[3] for result in results]
-    Month = [result[4] for result in results]
-    Year = [result[5] for result in results]
-    Price = [result[6] for result in results]
+    State = [result[1] for result in results]
+    City = [result[2] for result in results]
+    Lat = [result[3] for result in results]
+    Lng = [result[4] for result in results]
+    Month = [result[5] for result in results]
+    Year = [result[6] for result in results]
+    Price = [result[7] for result in results]
 
-    rent_data = [{
+    house_data = [{
         "RegionId": RegionId,
-        "SizeRank": SizeRank,
         "State": State,
         "City": City,
+        "Lat": Lat,
+        "Lng": Lng,
         "Year": Month,
         "Month": Year,
         "Price": Price
     }]
 
-    return jsonify(rent_data)
+    return jsonify(house_data)
 
 
 @app.route("/api/heatmap_data")

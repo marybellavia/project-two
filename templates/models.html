@@ -1,15 +1,145 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="jumbotron bg-warning" style="text-align: center">
-    <h1 class="text-light">{{ title }}</h1>
-</div>
 
-<div class="row">
-    <div class="col-md-12 d-flex justify-content-center text-center">
-        <div class="plot-garrett"></div>
-        <div class="plot-irene"></div>
+<body>
+    <!-- Text Auto Complete Library -->
+    <script src="../static/js/library/auto-complete.min.js"></script>
+
+    <div class="jumbotron bg-warning" style="text-align: center">
+        <h1 class="text-light">{{ title }}</h1>
     </div>
-</div>
+
+    <div class="row">
+        <div class="col-md-12 d-flex justify-content-center text-center">
+            <div class="plot-garrett"></div>
+            <div class="plot-irene"></div>
+        </div>
+    </div>
+
+    <div>
+        <form onsubmit="return false;" class="pure-form"
+            style="border-top: 1px solid #000000;border-bottom:1px solid #000000;background:#f3f0f0;margin:0px 0;padding:20px 10px;text-align:center"
+            _lpchecked="1">
+            <input id="citySearchBox" autofocus="" type="text" placeholder="Type a city name"
+                style="width:100%;max-width:600px;outline:0" autocomplete="off">
+        </form>
+
+        <script>
+            var autocomplete = new autoComplete({
+                selector: '#citySearchBox',
+                minChars: 1,
+                source: function (term, suggest) {
+                    term = term.toLowerCase();
+                    var choices = [
+                        "United States",
+                        "New York",
+                        "Los Angeles-Long Beach-Anaheim",
+                        "Chicago",
+                        "Dallas-Fort Worth",
+                        "Philadelphia",
+                        "Houston",
+                        "Washington",
+                        "Miami-Fort Lauderdale",
+                        "Atlanta",
+                        "Boston",
+                        "San Francisco",
+                        "Detroit",
+                        "Riverside",
+                        "Phoenix",
+                        "Seattle",
+                        "Minneapolis-St Paul",
+                        "San Diego",
+                        "St. Louis",
+                        "Tampa",
+                        "Baltimore",
+                        "Denver",
+                        "Portland",
+                        "Charlotte",
+                        "Sacramento",
+                        "San Antonio",
+                        "Orlando",
+                        "Cincinnati",
+                        "Cleveland",
+                        "Kansas City",
+                        "Las Vegas",
+                        "Columbus",
+                        "Indianapolis",
+                        "San Jose",
+                        "Austin",
+                        "Virginia Beach",
+                        "Nashville",
+                        "Providence",
+                        "Milwaukee",
+                        "Jacksonville",
+                        "Memphis",
+                        "Oklahoma City",
+                        "Louisville-Jefferson County",
+                        "Hartford",
+                        "New Orleans",
+                        "Buffalo",
+                        "Raleigh",
+                        "Birmingham",
+                        "Salt Lake City",
+                        "Rochester",
+                        "Grand Rapids",
+                        "Tucson",
+                        "Urban Honolulu",
+                        "Tulsa",
+                        "Fresno",
+                        "Worcester",
+                        "Stamford",
+                        "Albuquerque",
+                        "Albany",
+                        "Omaha",
+                        "New Haven",
+                        "Bakersfield",
+                        "Knoxville",
+                        "Greenville",
+                        "Ventura",
+                        "Allentown",
+                        "El Paso",
+                        "Baton Rouge",
+                        "Greensboro",
+                        "Akron",
+                        "North Port-Sarasota-Bradenton",
+                        "Little Rock",
+                        "Stockton",
+                        "Charleston",
+                        "Syracuse",
+                        "Colorado Springs",
+                        "Winston-Salem",
+                        "Springfield",
+                        "Fort Myers",
+                        "Boise City",
+                        "Toledo",
+                        "Madison",
+                        "Lakeland",
+                        "Ogden",
+                        "Daytona Beach",
+                        "Des Moines",
+                        "Jackson",
+                        "Scranton",
+                        "Harrisburg",
+                        "Melbourne",
+                        "Chattanooga",
+                        "Spokane",
+                        "Provo",
+                        "Durham",
+                        "Port St. Lucie",
+                        "Fort Collins",
+                        "Boulder",
+                        "Greeley",
+                        "Gainesville"
+                    ];
+                    var suggestions = [];
+                    for (i = 0; i < choices.length; i++)
+                        if (~choices[i].toLowerCase().indexOf(term)) suggestions.push(choices[i]);
+                    suggest(suggestions);
+                }
+            });
+        </script>
+    </div>
+</body>
 
 {% endblock %}

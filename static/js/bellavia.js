@@ -15,27 +15,26 @@ var myMap = L.map("map", {
   }).addTo(myMap);
   
   // Store API query variables
-  var baseURL = "https://data.cityofnewyork.us/resource/fhrw-4uyv.json?";
-  // Add the dates in the ISO formats
-  var date = "$where=created_date between '2016-01-01T00:00:00' and '2017-01-01T00:00:00'";
-  // Add the complaint type
-  var complaint1 = "&complaint_type=Illegal Animal Kept as Pet";
-  var complaint2 = "&complaint_type=Animal Abuse";
-  // Add a limit
-  var limit = "&$limit=10000";
+  const house_url = "/api/house_data"
   
-  // Assemble API query URL
-  var url1 = baseURL + date + complaint1 + limit;
-  var url2 = baseURL + date + complaint2 + limit;
-  console.log(url2);
-  
-  d3.json(url2, function(response) {
+  d3.json(house_url, function(response) {
     console.log(response);
+    console.log("Year:");
+    console.log(response[0].Year[1]);
     var heatArray = [];
-    for (var i = 0; i < response.length; i++) {
-      var location = response[i].location;
-      if (location) {
-        heatArray.push([location.coordinates[1], location.coordinates[0]]);
+
+    for (var i = 1; i < response.length; i++) {
+      
+      console.log(response[0].Year[i]);
+      
+      if (response[0].Year[i] == 2014){
+        // console.log(response[0].Year[i]);
+        var place = [response[0].City[i], response[0].Lat[i], response[0].Lng[i], response[0].Price[i]];  
+        if (place) {
+          for (var j = 1; j < place[4]; j++) {
+            heatArray.push([place[1], place[2]]);
+          }
+        }
       }
     }
     var heat = L.heatLayer(heatArray, {

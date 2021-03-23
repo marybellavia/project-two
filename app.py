@@ -123,34 +123,6 @@ def house_data():
 
     return jsonify(house_data)
 
-
-@app.route("/api/heatmap_data")
-def heatmap_data():
-
-    
-
-    # results = session.query(House.RegionId, House.SizeRank, House.State, House.City, House.Year, House.Month, House.Price).all()
-
-    # RegionId = [result[0] for result in results]
-    # SizeRank = [result[1] for result in results]
-    # State = [result[2] for result in results]
-    # City = [result[3] for result in results]
-    # Month = [result[4] for result in results]
-    # Year = [result[5] for result in results]
-    # Price = [result[6] for result in results]
-
-    # rent_data = [{
-    #     "RegionId": RegionId,
-    #     "SizeRank": SizeRank,
-    #     "State": State,
-    #     "City": City,
-    #     "Year": Month,
-    #     "Month": Year,
-    #     "Price": Price
-    # }]
-
-    return jsonify(heatmap_data)
-
 if __name__ == "__main__":
     app.run()
 

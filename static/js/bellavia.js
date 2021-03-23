@@ -1,7 +1,7 @@
 // Creating map object
 var myMap = L.map("map", {
-    center: [40.7, -73.95],
-    zoom: 11
+    center: [37.09024, -95.712891],
+    zoom: 5
   });
   
   // Adding tile layer to the map
@@ -27,24 +27,7 @@ var myMap = L.map("map", {
   // Assemble API query URL
   var url1 = baseURL + date + complaint1 + limit;
   var url2 = baseURL + date + complaint2 + limit;
-  // Grab the data with d3
-  d3.json(url1, function(response) {
-    // Create a new marker cluster group
-    var markers = L.markerClusterGroup();
-    // Loop through data
-    for (var i = 0; i < response.length; i++) {
-      // Set the data location property to a variable
-      var location = response[i].location;
-      // Check for location property
-      if (location) {
-        // Add a new marker to the cluster group and bind a pop-up
-        markers.addLayer(L.marker([location.coordinates[1], location.coordinates[0]])
-          .bindPopup(response[i].descriptor));
-      }
-    }
-    // Add our marker cluster layer to the map
-    myMap.addLayer(markers);
-  });
+  console.log(url2);
   
   d3.json(url2, function(response) {
     console.log(response);

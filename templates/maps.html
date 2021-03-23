@@ -1,45 +1,56 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block content %}
-
-<link rel="stylesheet" href="../static/css/style.css">
-    <link rel="stylesheet" href="../static/css/auto-complete.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ title }}</title>
+    <!-- <link rel="stylesheet" href="../static/css/style.css"> -->
+    <!-- <link rel="stylesheet" href="../static/css/auto-complete.css"> -->
     <link rel="stylesheet" href="../static/css/leaflet-heat.css">
-     <!-- Leaflet CSS -->
-     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
-     integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
-     crossorigin=""/>
- 
-     <!-- Marker Cluster CSS -->
-     <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.css">
-     <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.Default.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
+        integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+        crossorigin="" />
 
-<div class="jumbotron bg-info" style="text-align: center">
-    <h1 class="text-light">{{ title }}</h1>
-</div>
+    <!-- Marker Cluster CSS -->
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.Default.css">
 
-<div class="row">
-    <div class="col-md-12 d-flex justify-content-center text-center">
-        <div id="map"></div>
-        <div id="map-two"></div>
+</head>
+<body>
+    <div class="jumbotron bg-info" style="text-align: center">
+        <h1 class="text-light">{{ title }}</h1>
     </div>
-</div>
 
-   <!--Plotly JS-->
-   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-   <!-- API key -->
-   <script type="text/javascript" src="static/js/secret.js"></script>
-   <!-- Leaflet JS -->
-   <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js" integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q==" crossorigin=""></script>
-   <!-- D3 CDN -->
-   <script src="https://d3js.org/d3.v4.min.js"></script>
-   <!-- Marker Cluster JS -->
-   <script type="text/javascript" src="https://unpkg.com/leaflet.markercluster@1.0.3/dist/leaflet.markercluster.js"></script>
-   <!-- Our JS -->
-   <script type="text/javascript" src="static/js/bellavia.js"></script>
-   <script type="text/javascript" src="static/js/deblois.js"></script>
-   <script type="text/javascript" src="static/js/zou.js"></script>
-   <!-- Leaflet heatmap plugin-->
-   <script type="text/javascript" src="static/js/leaflet-heat.js"></script>
+    <div class="row">
+        <div class="col-md-12 d-flex justify-content-center text-center">
+            <div id="map"></div>
+            <div id="map-two"></div>
+        </div>
+    </div>
 
-{% endblock %}
+    <!--Plotly JS-->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- API key -->
+    <script type="text/javascript" src="static/js/secret.js"></script>
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+        integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+        crossorigin=""></script>
+    <!-- D3 CDN -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <!-- Marker Cluster JS -->
+    <script type="text/javascript"
+        src="https://unpkg.com/leaflet.markercluster@1.0.3/dist/leaflet.markercluster.js"></script>
+    <!-- Our JS -->
+    <script type="text/javascript" src="static/js/bellavia.js"></script>
+    <script type="text/javascript" src="static/js/deblois.js"></script>
+    <script type="text/javascript" src="static/js/zou.js"></script>
+    <!-- Leaflet heatmap plugin-->
+    <script type="text/javascript" src="static/js/leaflet-heat.js"></script>
+</body>
+
+</html>

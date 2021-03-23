@@ -151,6 +151,12 @@ def heatmap_data():
 
     return jsonify(heatmap_data)
 
+@app.route("/api/auth")
+def get_key():
+
+    return "123455"
+    #this is where you would return the environment variable from Heroku
+
 if __name__ == "__main__":
     app.run()
 

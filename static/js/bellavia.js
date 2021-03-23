@@ -1,3 +1,14 @@
+// Function to get API Key from Flask endpoint which accesses a config var in Heroku
+function GetApiKey() {
+  return (
+      fetch("http://127.0.0.1:5000/api/auth").then(function (response) {
+          (response.json().then(data => {
+              return data;
+          })
+          )
+      }))
+};
+
 // Creating map object
 var myMap = L.map("map", {
     center: [40.7, -73.95],
@@ -11,7 +22,7 @@ var myMap = L.map("map", {
     maxZoom: 18,
     zoomOffset: -1,
     id: "mapbox/streets-v11",
-    accessToken: API_KEY
+    accessToken: GetApiKey(),
   }).addTo(myMap);
   
   // Store API query variables

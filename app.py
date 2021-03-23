@@ -33,7 +33,7 @@ connect_args={'check_same_thread': False}
 
 conn = engine.connect()
 
-house_df = pandas.read_csv("static/data/house_cleaned.csv")
+house_df = pandas.read_csv("static/data/house_filtered.csv")
 house_df.to_sql("House", conn, if_exists='replace', index=False)
 
 rent_df = pandas.read_csv("static/data/rent_cleaned.csv")
@@ -79,8 +79,8 @@ def rent_data():
     City = [result[2] for result in results]
     Lat = [result[3] for result in results]
     Lng = [result[4] for result in results]
-    Month = [result[5] for result in results]
-    Year = [result[6] for result in results]
+    Year = [result[5] for result in results]
+    Month = [result[6] for result in results]
     Price = [result[7] for result in results]
 
     rent_data = [{
@@ -89,8 +89,8 @@ def rent_data():
         "City": City,
         "Lat": Lat,
         "Lng": Lng,
-        "Year": Month,
-        "Month": Year,
+        "Year": Year,
+        "Month": Month,
         "Price": Price
     }]
 
@@ -106,8 +106,8 @@ def house_data():
     City = [result[2] for result in results]
     Lat = [result[3] for result in results]
     Lng = [result[4] for result in results]
-    Month = [result[5] for result in results]
-    Year = [result[6] for result in results]
+    Year = [result[5] for result in results]
+    Month = [result[6] for result in results]
     Price = [result[7] for result in results]
 
     house_data = [{
@@ -116,12 +116,39 @@ def house_data():
         "City": City,
         "Lat": Lat,
         "Lng": Lng,
-        "Year": Month,
-        "Month": Year,
+        "Year": Year,
+        "Month": Month,
         "Price": Price
     }]
 
     return jsonify(house_data)
+
+@app.route("/api/house_data/1/2014/")
+def jan_twentyfourteen_data():
+
+    results = session.query(House.RegionId, House.State, House.City, House.Lat, House.Lng, House.Year, House.Month, House.Price).all()
+
+    RegionId = [result[0] for result in results if result[6] == 1 if result[5] == 2014]
+    State = [result[1] for result in results if result[6] == 1 if result[5] == 2014]
+    City = [result[2] for result in results if result[6] == 1 if result[5] == 2014]
+    Lat = [result[3] for result in results if result[6] == 1 if result[5] == 2014]
+    Lng = [result[4] for result in results if result[6] == 1 if result[5] == 2014]
+    Year = [result[5] for result in results if result[6] == 1 if result[5] == 2014]
+    Month = [result[6] for result in results if result[6] == 1 if result[5] == 2014]
+    Price = [result[7] for result in results if result[6] == 1 if result[5] == 2014]
+
+    heatmap_data = [{
+        "RegionId": RegionId,
+        "State": State,
+        "City": City,
+        "Lat": Lat,
+        "Lng": Lng,
+        "Year": Year,
+        "Month": Month,
+        "Price": Price
+    }]
+
+    return jsonify(heatmap_data)
 
 if __name__ == "__main__":
     app.run()

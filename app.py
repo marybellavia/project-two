@@ -10,6 +10,7 @@ from flask import (
 from sqlalchemy import create_engine
 from flask_sqlalchemy import SQLAlchemy
 import pandas, sqlite3, csv
+import numpy as np
 
 from sqlalchemy.ext.declarative import declarative_base
 Base = declarative_base()
@@ -220,9 +221,34 @@ def rent_jan_data():
     }]
 
     return jsonify(rent_data)
+    
+@app.route("/api/house_data/bubblechart")
+def house_bubblechart():
+
+    results = session.query(House.RegionId, House.City, House.Year, House.Price, House.Month).all()
+
+    City = [result[1] for result in results if result[4] == 12 if result[2] == 2014]
+    Year = [result[2] for result in results if result[4] == 12 if result[2] == 2014]
+    Price_2014 = [result[3] for result in results if result[4] == 12 if result[2] == 2014]
+    Price_2020 = [result[3] for result in results if result[4] == 12 if result[2] == 2020]
+
+    #limiting the data sets to top 250 cities
+    City = City[:250]
+    Year = Year[:250]
+    Price_2014 = Price_2014[:250]
+    Price_2020 = Price_2020[:250]
+
+    #subtract each 2014 list element from each corresponding 2020 list element, divide the result by 1000, then round that result to 0 decimal places
+    PriceChange = (np.subtract(Price_2020,Price_2014)/1000).tolist()
+
+    house_bubblechart_data = [{
+        "City": City,
+        "Year": Year,
+        "Price": Price_2020,
+        "MarkerSize": PriceChange
+    }]
+
+    return jsonify(house_bubblechart_data)
 
 if __name__ == "__main__":
     app.run()
-
-
-

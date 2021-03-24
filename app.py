@@ -60,20 +60,12 @@ def about():
 @app.route("/models")
 def models():
 
-    rent_list = session.query(Rent)
-
-    # Redirect back to home page
-    return render_template("models.html", title="Models", rent=rent_list, choices=choices)
-
-@app.route("/marymodels")
-def marymodels():
-
     results = session.query(Rent.City, Rent.Year, Rent.Month).all()
 
     cities_no_copy = [result[0] for result in results if result[2] == 1 if result[1] == 2020]
 
     # Redirect back to home page
-    return render_template("marymodels.html", title="Mary Models", cities=cities_no_copy)
+    return render_template("models.html", title="Models", cities=cities_no_copy)
 
 @app.route("/housemap")
 def housemap():
@@ -251,4 +243,4 @@ def house_bubblechart():
     return jsonify(house_bubblechart_data)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

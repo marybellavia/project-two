@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
+        integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+        crossorigin="" />
+    <!-- Our CSS  -->
+    <link rel="stylesheet" href="./static/css/style.css" />
+    <link rel="stylesheet" href="./static/css/leaflet-heat.css" />
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Rent & House Index</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
+            aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto">
+
+                {% if title == 'Rent & House Index Analysis' %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                {% endif %}
+
+                {% if title == 'About' %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="/about"><span class="sr-only">(current)</span>About</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+                {% endif %}
+
+                {% if title == 'Models' %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="/models"><span class="sr-only">(current)</span>Models</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/models">Models</a>
+                </li>
+                {% endif %}
+
+                {% if title == 'House Index Density Map' %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="/housemap"><span class="sr-only">(current)</span>House Mapping</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/housemap">House Mapping</a>
+                </li>
+                {% endif %}
+
+                {% if title == 'Rent Index Density Map' %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="/rentmap"><span class="sr-only">(current)</span>Rent Mapping</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/rentmap">Rent Mapping</a>
+                </li>
+                {% endif %}
+        </div>
+    </nav>
+    <div class="container">
+        <div class="jumbotron bg-danger" style="text-align: center">
+            <h1 class="text-light">{{ title }}</h1>
+            <h3 class="text-light">Data from January 2020</h2>
+        </div>
+    </div>
+    <div id="map"></div>
+
+    <!-- API key -->
+    <script type="text/javascript" src="static/js/secret.js"></script>
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+        integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+        crossorigin=""></script>
+    <!-- D3 CDN -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <!-- JS -->
+    <script type="text/javascript" src="static/js/bellavia_rentmap.js"></script>
+
+    <!-- Leaflet heatmap plugin-->
+    <script type="text/javascript" src="static/js/leaflet-heat.js"></script>
+
+
+</body>
+
+</html>

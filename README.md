@@ -24,10 +24,10 @@ Zillow defines the Zillow observed rent index (ZORI) as:
 
 ## Images of Charts & Graphs Analysis
 ### Bubble Chart
-![Bubble Chart](../static/images/garrett_graph.PNG)
+![Bubble Chart](static/images/garrett_graph.PNG)
 ### Line Graph
-![Bubble Chart](../static/images/mary_graph.PNG)
+![Bubble Chart](static/images/mary_graph.PNG)
 ### House Heatmap
-![Bubble Chart](../static/images/house_heatmap.PNG)
+![Bubble Chart](static/images/house_heatmap.PNG)
 ### Rent Heatmap
-![Bubble Chart](../static/images/rent_heatmap.PNG)
+![Bubble Chart](static/images/rent_heatmap.PNG)

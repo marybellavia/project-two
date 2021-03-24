@@ -18,8 +18,12 @@ Zillow defines the Zillow observed rent index (ZORI) as:
 * Have Irene write a couple sentences here.
 * In addition to using the data provided by Zillow, we used the the [Geocoding API by Google](https://developers.google.com/maps/documentation/geocoding/start) to pull latitude and longitude data for each of the cities in each of the respective datasets.
 
-## The Analysis
-* charts screenshots
-    * analysis
-* maps screenshots
-    * analysis
+## Images of Charts & Graphs Analysis
+### Bubble Chart
+![Bubble Chart](../static/images/garrett_graph.PNG)
+### Line Graph
+![Bubble Chart](../static/images/mary_graph.PNG)
+### House Heatmap
+![Bubble Chart](../static/images/house_heatmap.PNG)
+### Rent Heatmap
+![Bubble Chart](../static/images/rent_heatmap.PNG)

@@ -63,11 +63,17 @@ def models():
     # Redirect back to home page
     return render_template("models.html", title="Models", rent=rent_list)
 
-@app.route("/maps")
-def maps():
+@app.route("/housemap")
+def housemap():
 
     # Redirect back to home page
-    return render_template("maps.html", title="Maps")
+    return render_template("housemap.html", title="House Index Density Map")
+
+@app.route("/rentmap")
+def rentmap():
+
+    # Redirect back to home page
+    return render_template("rentmap.html", title="Rent Index Density Map")
 
 @app.route("/api/rent_data")
 def rent_data():
@@ -123,19 +129,54 @@ def house_data():
 
     return jsonify(house_data)
 
-@app.route("/api/house_data/1/2014/")
-def jan_twentyfourteen_data():
+@app.route("/api/house_data/1/2020/")
+def jan_twentytwenty_data():
 
     results = session.query(House.RegionId, House.State, House.City, House.Lat, House.Lng, House.Year, House.Month, House.Price).all()
 
-    RegionId = [result[0] for result in results if result[6] == 1 if result[5] == 2014]
-    State = [result[1] for result in results if result[6] == 1 if result[5] == 2014]
-    City = [result[2] for result in results if result[6] == 1 if result[5] == 2014]
-    Lat = [result[3] for result in results if result[6] == 1 if result[5] == 2014]
-    Lng = [result[4] for result in results if result[6] == 1 if result[5] == 2014]
-    Year = [result[5] for result in results if result[6] == 1 if result[5] == 2014]
-    Month = [result[6] for result in results if result[6] == 1 if result[5] == 2014]
-    Price = [result[7] for result in results if result[6] == 1 if result[5] == 2014]
+    RegionId = [result[0] for result in results if result[6] == 1 if result[5] == 2020 if result[7] >= 309433]
+    State = [result[1] for result in results if result[6] == 1 if result[5] == 2020 if result[7] >= 309433]
+    City = [result[2] for result in results if result[6] == 1 if result[5] == 2020 if result[7] >= 309433]
+    Lat = [result[3] for result in results if result[6] == 1 if result[5] == 2020 if result[7] >= 309433]
+    Lng = [result[4] for result in results if result[6] == 1 if result[5] == 2020 if result[7] >= 309433]
+    Year = [result[5] for result in results if result[6] == 1 if result[5] == 2020 if result[7] >= 309433]
+    Month = [result[6] for result in results if result[6] == 1 if result[5] == 2020 if result[7] >= 309433]
+    Price = [result[7] for result in results if result[6] == 1 if result[5] == 2020 if result[7] >= 309433]
+
+    heatmap_data = [{
+        "RegionId": RegionId,
+        "State": State,
+        "City": City,
+        "Lat": Lat,
+        "Lng": Lng,
+        "Year": Year,
+        "Month": Month,
+        "Price": Price
+    }]
+
+    return jsonify(heatmap_data)
+
+@app.route("/api/rent_data/1/2020/")
+def jan_twentytwenty_rent_data():
+
+    results = session.query(Rent.RegionId, Rent.State, Rent.City, Rent.Lat, Rent.Lng, Rent.Year, Rent.Month, Rent.Price).all()
+
+    RegionId = [result[0] for result in results if result[6] == 1 if result[5] == 2020 if result[7] >= 1691]
+    State = [result[1] for result in results if result[6] == 1 if result[5] == 2020 if result[7] >= 1691]
+    City = [result[2] for result in results if result[6] == 1 if result[5] == 2020 if result[7] >= 1691]
+    Lat = [result[3] for result in results if result[6] == 1 if result[5] == 2020 if result[7] >= 1691]
+    Lng = [result[4] for result in results if result[6] == 1 if result[5] == 2020 if result[7] >= 1691]
+    Year = [result[5] for result in results if result[6] == 1 if result[5] == 2020 if result[7] >= 1691]
+    Month = [result[6] for result in results if result[6] == 1 if result[5] == 2020 if result[7] >= 1691]
+    Price = [result[7] for result in results if result[6] == 1 if result[5] == 2020 if result[7] >= 1691]
+    # RegionId = [result[0] for result in results if result[6] == 1 if result[5] == 2020]
+    # State = [result[1] for result in results if result[6] == 1 if result[5] == 2020]
+    # City = [result[2] for result in results if result[6] == 1 if result[5] == 2020]
+    # Lat = [result[3] for result in results if result[6] == 1 if result[5] == 2020]
+    # Lng = [result[4] for result in results if result[6] == 1 if result[5] == 2020]
+    # Year = [result[5] for result in results if result[6] == 1 if result[5] == 2020]
+    # Month = [result[6] for result in results if result[6] == 1 if result[5] == 2020]
+    # Price = [result[7] for result in results if result[6] == 1 if result[5] == 2020]
 
     heatmap_data = [{
         "RegionId": RegionId,

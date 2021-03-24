@@ -15,12 +15,12 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 }).addTo(myMap);
 
 // Store API query variables
-const house_url = "/api/house_data/1/2014/"
+const house_url = "/api/house_data/1/2020/"
 
 d3.json(house_url, function (response) {
   console.log(response);
   var heatArray = [];
-  for (var i = 1; i < response[0].Year.length; i++) {
+  for (var i = 0; i < response[0].Year.length; i++) {
 
     var place = [response[0].City[i], response[0].Lat[i], response[0].Lng[i], response[0].Price[i], response[0].State[i]];
     var m = Math.round(place[3] / 100);
@@ -32,7 +32,7 @@ d3.json(house_url, function (response) {
         .bindPopup(place[0] + ", " + place[4] + "<br>Typical Home Value: $" + place[3]).addTo(myMap);
     
   }
-
+  console.log(heatArray);
   var heat = L.heatLayer(heatArray, {
     radius: 25,
     blur: 35

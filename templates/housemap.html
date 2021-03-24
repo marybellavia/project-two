@@ -56,13 +56,23 @@
                 </li>
                 {% endif %}
 
-                {% if title == 'Maps' %}
+                {% if title == 'House Index Density Map' %}
                 <li class="nav-item active">
-                    <a class="nav-link" href="/maps"><span class="sr-only">(current)</span>Maps</a>
+                    <a class="nav-link" href="/housemap"><span class="sr-only">(current)</span>House Mapping</a>
                 </li>
                 {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="/maps">Maps</a>
+                    <a class="nav-link" href="/housemap">House Mapping</a>
+                </li>
+                {% endif %}
+
+                {% if title == 'Rent Index Density Map' %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="/rentmap"><span class="sr-only">(current)</span>Rent Mapping</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/rentmap">Rent Mapping</a>
                 </li>
                 {% endif %}
         </div>
@@ -70,7 +80,7 @@
     <div class="container">
         <div class="jumbotron bg-info" style="text-align: center">
             <h1 class="text-light">{{ title }}</h1>
-            <h2>Housing Index Heatmap</h2>
+            <h3 class="text-light">Data from January 2020</h2>
         </div>
     </div>
     <div id="map"></div>
@@ -84,8 +94,7 @@
     <!-- D3 CDN -->
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <!-- JS -->
-    <script type="text/javascript" src="static/js/bellavia.js"></script>
-
+    <script type="text/javascript" src="static/js/bellavia_housemap.js"></script>
     <!-- Leaflet heatmap plugin-->
     <script type="text/javascript" src="static/js/leaflet-heat.js"></script>
 

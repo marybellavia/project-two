@@ -11,7 +11,7 @@ fetch('/api/house_data/bubblechart')
 
 var red = 'rgb(255, 48, 37)';
 var green = 'rgb(42, 233, 69)';
-var cityX = Array.from({length: 250}, (x, i) => i+1); //number of cities in the house data set (893 cities will be final number)
+var cityX = Array.from({length: 250}, (x, i) => i+1); //number of cities in the house data set (250 cities will be final number)
 
 var trace1 = {
     x: cityX,

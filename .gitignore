@@ -129,5 +129,4 @@ dmypy.json
 .pyre/
 
 # api key file
-secret.js
 secret.py

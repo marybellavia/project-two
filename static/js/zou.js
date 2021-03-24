@@ -1,5 +1,5 @@
 // Store API query variables
-const rentalapi_url = "/api/rent_data"
+const rentalapi_url = "https://raw.githubusercontent.com/marybellavia/project-two/main/static/data/rent_cleaned.csv/rent_data"
 
 Plotly.d3.json(rentalapi__url, function(rows){
 

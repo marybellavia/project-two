@@ -1,23 +1,26 @@
-Plotly.d3.json("/api/rent_data", function(err, rows){
+// Store API query variables
+const rentalapi_url = "/api/rent_data"
 
-    function unpack(rows, key) {
-        return rows.map(function(row) { return row[key]; });
+Plotly.d3.json(rentalapi__url, function(rows){
+
+      function unpack(rows, key) {
+          return rows.map(function(row) { return row[key]; });
+      }
+
+  var allStateNames = unpack(rows,'State'),
+      allYear = unpack(rows,'Year'),
+      allPrice = unpack(rows,'Price'),
+      listofStates = [],
+      currentState,
+      currentPrice = [],
+      currentYear = [];
+      listofStates.split(',');
+    for (var i = 0; i < allStateNames.length; i++ ){
+      if (listofStates.indexOf(allStateNames[i]) === -1 ){
+          listofStates.push(allStateNames[i]);
+      }
     }
-
-var allStateNames = unpack(rows, 'State'),
-    allYear = unpack(rows, 'Year'),
-    allPrice = unpack(rows, 'Price'),
-    listofStates = [],
-    currentState,
-    currentPrice = [],
-    currentYear = [];
-
-  for (var i = 0; i < allStateNames.length; i++ ){
-    if (listofStates.indexOf(allStateNames[i]) === -1 ){
-        listofStates.push(allStateNames[i]);
-    }
-  }
-  
+    
   function getStateData(chosenState) {
     currentPrice = [];
     currentYear = [];
@@ -48,10 +51,12 @@ function setBubblePlot(chosenState) {
     var data = [trace1];
 
     var layout = {
+      width:800,
+      hight:800,
       title: 'Price for rental by State<br>'+ chosenState + ' Price'
     };
 
-    Plotly.newPlot("plot-irene", data, layout);
+    Plotly.newPlot("plot-irene", data, layout,{showSendToCloud: true});
 };
   
 var innerContainer = document.querySelector('[data-num="0"'),
@@ -66,7 +71,7 @@ function assignOptions(textArray, selector) {
   }
 }
 
-assignOptions(listofCountries, stateSelector);
+assignOptions(listofStates, stateSelector);
 
 function updateState(){
     setBubblePlot(stateSelector.value);

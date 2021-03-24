@@ -26,4 +26,3 @@ var trace1 = {
     width: 800
   };
   
-  Plotly.newPlot("plot-garrett", data, layout);

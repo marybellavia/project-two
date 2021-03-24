@@ -1,6 +1,7 @@
 # Zillow Analysis
 ### Contributors: Mary Bellavia, Garrett DeBlois, Irene Zou
 ### [Heroku Deployment](https://zillow-analysis.herokuapp.com/)
+### [Powerpoint Presentation](https://docs.google.com/presentation/d/1tYsIcO9v1JDVxrHI7guTvUxUJM9RLj5_VUVZEkr1oZc/edit#slide=id.gc7a63e25a9_0_16)
 
 ## The Data
 * All models and maps were created using open source data provided by [Zillow](https://www.zillow.com/research/data/). The precise meaning of house and rental index as described by Zillow about their data is listed below

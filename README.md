@@ -15,7 +15,11 @@ Zillow defines the Zillow observed rent index (ZORI) as:
 -- [Zillow Research Data](https://www.zillow.com/research/data/)
 
 ## Data Cleaning
-* Have Irene write a couple sentences here.
+* Analysis on Zillow's rental and housing data includes the following:
+- working with the time series tables;
+- changes made to the data types and data formats;
+- organizing columns to a cleaner form;
+- acquire information from google geo api.
 * In addition to using the data provided by Zillow, we used the the [Geocoding API by Google](https://developers.google.com/maps/documentation/geocoding/start) to pull latitude and longitude data for each of the cities in each of the respective datasets.
 
 ## Images of Charts & Graphs Analysis

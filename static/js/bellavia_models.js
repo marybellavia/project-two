@@ -30,7 +30,7 @@ function buildPlot(city) {
       if (response[0].City[i] == name) {
         years.push(response[0].Year[i]);
         prices.push(response[0].Price[i]);
-        prices_labels.push(`$${response[0].Price[i]}`)
+        prices_labels.push(`Average Rent: $${response[0].Price[i]}`)
       }
     }
 
@@ -40,7 +40,7 @@ function buildPlot(city) {
       name: name,
       x: years,
       y: prices,
-      // text: prices_labels,
+      text: prices_labels,
       line: {
         color: "#17BECF"
       },

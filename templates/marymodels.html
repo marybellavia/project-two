@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron bg-warning" style="text-align: center">
+    <h1 class="text-light">{{ title }}</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-3 justify-content-center text-center">
+        <form action="/marymodels">
+            <label for="city">Choose a city:</label>
+            <select id="city" name="city">
+                {% for city in cities %}
+                <option value="{{city}}">{{city}}</option>
+                {% endfor %}
+            </select>
+            <input id="submit" type="submit" value="Submit">
+        </form>
+        <hr>
+        <form onsubmit="return false;" onsubmit="GetCityName()" class="pure-form"
+            style="border-top: 1px solid #000000;border-bottom:1px solid #000000;background:#f3f0f0;margin:0px 0;padding:20px 10px;text-align:center"
+            _lpchecked="1">
+            <input id="citySearchBox" autofocus="" type="text" placeholder="Type a city name"
+                style="width:100%;max-width:600px;outline:0" autocomplete="off">
+            <button onclick="GetCityName()">Generate</button>
+        </form>
+    </div>
+    <div class="col-md-9">
+        <div id="plot-mary"></div>
+    </div>
+</div>
+
+<!-- Text Auto Complete Library -->
+<script src="../static/js/library/auto-complete.min.js"></script>
+
+<!-- Plotly library pulled from CDN -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.7/d3.min.js"></script>
+
+
+<!-- Each team member's javascript files -->
+<script src="../static/js/bellavia_models.js"></script>
+
+{% endblock %}

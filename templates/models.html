@@ -1,19 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-<body>
-    <!-- Text Auto Complete Library -->
-    <script src="../static/js/library/auto-complete.min.js"></script>
-
-    <!-- Plotly library pulled from CDN -->
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-
-    <!-- Each team member's javascript files -->
-    <script src="../static/js/deblois.js"></script>
-    <script src="../static/js/zou.js"></script>
-    <script src="../static/js/bellavia.js"></script>
-
     <div class="jumbotron bg-warning" style="text-align: center">
         <h1 class="text-light">{{ title }}</h1>
     </div>
@@ -943,7 +930,18 @@
 
     <div class="row">
         <div class="col-md-12 d-flex justify-content-center text-center">
-            <div id="plot-irene"></div>
+            <div class="bubbleplot" data-num="0">
+                <div class="plot" id="plot-irene"></div>
+                <form action="/action_page.php">
+                    <label for="state">Choose a state:</label>
+                    <select id="state" name="state">
+                        {% for city in choices %}
+                        <option value="{{city}}">{{city}}</option>
+                        {% endfor %}
+                    </select>
+                    <input type="submit" value="Submit">
+                  </form>
+            </div>
         </div>
     </div>
 
@@ -953,6 +951,19 @@
         </div>
     </div>
 
-</body>
+        <!-- Text Auto Complete Library -->
+        <script src="../static/js/library/auto-complete.min.js"></script>
+        <!-- API key -->
+        <script type="text/javascript" src="static/js/secret.js"></script>
+    
+        <!-- Plotly library pulled from CDN -->
+        <script src="plotly-latest.min.js"></script>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    
+    
+        <!-- Each team member's javascript files -->
+        <script src="../static/js/deblois.js"></script>
+        <script src="../static/js/zou.js"></script>
+        <script src="../static/js/bellavia.js"></script>
 
 {% endblock %}

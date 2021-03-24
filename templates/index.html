@@ -3,13 +3,11 @@
 {% block content %}
 <div class="jumbotron bg-dark" style="text-align: center">
     <h1 class="text-light">House and Rental Index Data Analysis</h1>
-    <p class="text-light">Interested in housing and rental index in the United States?<br>Well, you have come to the
-        right
-        place.<br>Click on one of the links below to learn more.</p>
+    <p class="text-light"><br>Click on one of the links below to learn more.</p>
 </div>
 
 <div class="row">
-    <div class="col-md-4 d-flex justify-content-center text-center">
+    <div class="col-md-3 d-flex justify-content-center text-center">
         <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
             <div class="card-body">
                 <h4 class="card-title"><a
@@ -18,7 +16,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4 d-flex justify-content-center text-center">
+    <div class="col-md-3 d-flex justify-content-center text-center">
         <div class="card text-white bg-warning mb-3" style="max-width: 20rem;">
             <div class="card-body">
                 <h4 class="card-title"><a
@@ -27,12 +25,23 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4 d-flex justify-content-center text-center">
+    <div class="col-md-3 d-flex justify-content-center text-center">
         <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
             <div class="card-body">
                 <h4 class="card-title"><a
-                    href="/maps"><button type="button" class="btn btn-secondary btn-block">Maps</button></a></h4>
-                <p class="card-text">thumbnail of one of the maps goes here</p>
+                    href="/housemap"><button type="button" class="btn btn-secondary btn-block">House Mapping</button></a></h4>
+                <p class="card-text">Heatmap of House Index from January 2020</p>
+                <img src="../static/images/house_heatmap.PNG" alt="House Heatmap" width="200" height="150">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 d-flex justify-content-center text-center">
+        <div class="card text-white bg-danger mb-3" style="max-width: 20rem;">
+            <div class="card-body">
+                <h4 class="card-title"><a
+                    href="/rentmap"><button type="button" class="btn btn-secondary btn-block">Rent Mapping</button></a></h4>
+                <p class="card-text">Heatmap of Rent Index from January 2020</p>
+                <img src="../static/images/rent_heatmap.PNG" alt="Rent Heatmap" width="200" height="150">
             </div>
         </div>
     </div>
